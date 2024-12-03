@@ -1,0 +1,29 @@
+# Record name
+name: 'logingrupa.offercollectionsshopaholic::lang.collection.name'
+
+# Model Form Field configuration
+form: $/logingrupa/offercollectionsshopaholic/models/collection/fields.yaml
+
+# Model Class name
+modelClass: Logingrupa\OfferCollectionsShopaholic\Models\Collection
+
+# Default redirect location
+defaultRedirect: logingrupa/offercollectionsshopaholic/collections
+
+# Create page
+create:
+  title: 'backend::lang.form.create_title'
+  redirect: logingrupa/offercollectionsshopaholic/collections/update/:id
+  redirectClose: logingrupa/offercollectionsshopaholic/collections
+  flashSave: 'lovata.toolbox::lang.message.create_success'
+
+# Update page
+update:
+  title: 'backend::lang.form.update_title'
+  redirect: logingrupa/offercollectionsshopaholic/collections
+  redirectClose: logingrupa/offercollectionsshopaholic/collections
+  flashSave: 'lovata.toolbox::lang.message.update_success'
+  flashDelete: 'lovata.toolbox::lang.message.delete_success'
+
+# Preview page
+preview: { }

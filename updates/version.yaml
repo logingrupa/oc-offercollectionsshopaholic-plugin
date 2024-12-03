@@ -1,0 +1,11 @@
+1.0.0:
+  - 'Init plugin'
+1.0.1:
+  - 'Create tables.'
+  - create_table_collections.php
+1.0.2:
+  - 'Create relationship tables.'
+  - create_table_collection_offer.php
+1.0.3:
+  - 'Add fields to database tables for cssclass and start_date end_date for collections for future use.'
+  - update_table_collections_add_aditional_fields.php

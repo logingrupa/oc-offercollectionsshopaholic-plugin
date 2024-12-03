@@ -1,0 +1,10 @@
+plugin:
+  name: 'logingrupa.offercollectionsshopaholic::lang.plugin.name'
+  description: 'logingrupa.offercollectionsshopaholic::lang.plugin.description'
+  author: Logingrupa
+  icon: icon-th-list
+  homepage: 'https://logingrupa.lv'
+permissions:
+  offercollectionsshopaholic-menu-collections:
+    label: 'logingrupa.offercollectionsshopaholic::lang.permission.collection'
+    tab: 'logingrupa.offercollectionsshopaholic::lang.tab.permissions'
