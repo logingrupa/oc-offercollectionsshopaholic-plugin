@@ -1,0 +1,9 @@
+{
+  "name": "logingrupa/offercollectionsshopaholic-plugin",
+  "type": "october-plugin",
+  "description": "October CMS Plugin extending Lovata.Shopaholic functionality, adding functionality for creating collentions of diffrent product offers as a collection. For ecamplel create collection or red color shoes, or size 45 shoes.",
+  "license": "GPL-3.0-only",
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}
