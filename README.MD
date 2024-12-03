@@ -8,6 +8,7 @@ This plugin extends the functionalities of the [Lovata Shopaholic plugin](https:
 
 ---
 
+
 ## Features
 
 - Create, manage, and display collections of offers.
@@ -16,6 +17,15 @@ This plugin extends the functionalities of the [Lovata Shopaholic plugin](https:
 - Provides components for frontend rendering.
 - Custom database schema for collections and offers.
 
+---
+
+## Installation
+
+1. Run
+```bash
+php artisan plugin:install Logingrupa.OfferCollectionsShopaholic --from=git@github.com:logingrupa/oc-offercollectionsshopaholic-plugin.git --want=dev-master --oc
+
+```
 ---
 
 ## File Structure and Functionality
@@ -141,11 +151,5 @@ Primary model for managing offer collections.
 
 ---
 
-## Installation
 
-1. Run
-```bash
-php artisan plugin:install Logingrupa.OfferCollectionsShopaholic --from=git@github.com:logingrupa/oc-offercollectionsshopaholic-plugin.git --want=dev-master --oc
-
-```
 
