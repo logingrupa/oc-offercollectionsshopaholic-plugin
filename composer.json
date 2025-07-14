@@ -1,18 +1,16 @@
 {
   "name": "logingrupa/oc-offercollectionsshopaholic-plugin",
   "type": "october-plugin",
-  "description": "October CMS Plugin extending Lovata.Shopaholic functionality, adding functionality for creating collentions of diffrent product offers as a collection. For example create collection or red color shoes, or size 45 shoes.",
+  "description": "October CMS Plugin extending Lovata.Shopaholic functionality, adding functionality for creating collections of different product offers. For example, create a collection of red color shoes or size 45 shoes.",
   "license": "GPL-3.0-only",
   "authors": [
-      {
-        "name": "Rolands Zeltins",
-        "email": "hi@logingrupa.lv"
-      }
-    ],
+    {
+      "name": "Rolands Zeltins",
+      "email": "hi@logingrupa.lv"
+    }
+  ],
   "require": {
-    "composer/installers": "~1.0"
-  }
-  "require": {
+    "composer/installers": "~1.0",
     "php": ">=7.2"
   }
 }
