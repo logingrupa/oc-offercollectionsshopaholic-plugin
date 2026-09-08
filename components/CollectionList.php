@@ -26,7 +26,7 @@ class CollectionList extends ComponentBase
      * @param array $arElementIDList
      * @return CollectionCollection
      */
-    public function make($arElementIDList = null)
+    public function makeCollection($arElementIDList = null)
     {
         return CollectionCollection::make($arElementIDList);
     }
