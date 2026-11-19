@@ -2,7 +2,6 @@
 
 use App;
 use Cms\Classes\ComponentBase;
-use Logingrupa\OfferCollectionsShopaholic\Classes\Helper\CollectionEditorial;
 use Logingrupa\StoreExtender\Classes\Color\ColorFamilyHubReader;
 
 /**
@@ -43,28 +42,6 @@ class CollectionHub extends ComponentBase
     public function get(): array
     {
         return $this->obReader->sectionList($this->resolveLocale());
-    }
-
-    /**
-     * Every listed family flat, for a template that wants one loop.
-     *
-     * @return array
-     */
-    public function getFamilyList(): array
-    {
-        return $this->obReader->familyList($this->resolveLocale());
-    }
-
-    /**
-     * The editorial row of one family, or null. The hub reads it for the
-     * chip picture; the family page reads it for the copy.
-     *
-     * @param string $sSlug
-     * @return \Logingrupa\OfferCollectionsShopaholic\Classes\Item\CollectionItem|null
-     */
-    public function getEditorial($sSlug)
-    {
-        return CollectionEditorial::bySlug((string) $sSlug);
     }
 
     /**

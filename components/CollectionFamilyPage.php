@@ -4,6 +4,7 @@ use App;
 use Cms\Classes\ComponentBase;
 use Logingrupa\OfferCollectionsShopaholic\Classes\Helper\CollectionEditorial;
 use Logingrupa\StoreExtender\Classes\Color\ColorFamilyHubReader;
+use Logingrupa\StoreExtender\Models\ColorFamilyMeta;
 use Lovata\Toolbox\Traits\Helpers\TraitComponentNotFoundResponse;
 
 /**
@@ -105,6 +106,28 @@ class CollectionFamilyPage extends ComponentBase
     }
 
     /**
+     * Every family of this page's own kind, hub order, this one included.
+     *
+     * The page draws them as a chip strip, so a visitor can move between
+     * collections, or between colours, without going back through the hub.
+     * Collections and colours stay apart: a strip of all 32 reads as noise,
+     * and the hub chip in the strip is the way across.
+     *
+     * @return array
+     */
+    public function getSiblingList(): array
+    {
+        if ($this->arFamily === null) {
+            return [];
+        }
+
+        $arSectionList = $this->obReader->sectionList((string) App::getLocale());
+        $sKind = $this->arFamily['kind'] === ColorFamilyMeta::KIND_COLLECTION ? 'collections' : 'colors';
+
+        return $arSectionList[$sKind];
+    }
+
+    /**
      * The stored copy for this family, or null when no editor has written
      * one yet. The page renders from the taxonomy without it.
      *
@@ -128,17 +151,6 @@ class CollectionFamilyPage extends ComponentBase
     public function isIndexable(): bool
     {
         return $this->arFamily !== null && $this->arFamily['bIsIndexable'];
-    }
-
-    /**
-     * Whether this family is a named collection rather than a colour.
-     *
-     * @return bool
-     */
-    public function isCollection(): bool
-    {
-        return $this->arFamily !== null
-            && $this->arFamily['kind'] === \Logingrupa\StoreExtender\Models\ColorFamilyMeta::KIND_COLLECTION;
     }
 
     /**

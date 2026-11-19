@@ -60,14 +60,4 @@ class CollectionEditorial
 
         return $obItem->isEmpty() ? null : $obItem;
     }
-
-    /**
-     * Drop the memo. Tests only - one request never sees two answers.
-     *
-     * @return void
-     */
-    public static function forgetMemo(): void
-    {
-        static::$arItemMemo = [];
-    }
 }
