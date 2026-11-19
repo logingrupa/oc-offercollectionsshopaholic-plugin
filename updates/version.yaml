@@ -11,3 +11,5 @@
   - update_table_collections_add_aditional_fields.php
 1.0.4:
   - 'The element-collection factory on the list component is renamed to makeCollection(). Larajax 3.0 adds a static make() factory to the view-component trait that Cms\Classes\ComponentBase uses, so a component declaring its own non-static make() is a fatal error at class declaration. Twig call sites become Alias.makeCollection(...).'
+1.1.0:
+  - 'Two components and a seeder turn this plugin into the editorial half of the collections hub. CollectionHub lists every colour family and collection that carries a live shade, CollectionFamilyPage serves one of them with its shades, and both read membership from the colour classifier through Logingrupa.StoreExtender rather than from the offers pivot, which nothing writes to any more. A collection row now holds words only: name, intro, body copy and a picture, keyed to the family slug. offercollections:seed-color-collections creates a row for every family that has none and never touches a row that exists, so an editor can run it again after a new collection appears.'

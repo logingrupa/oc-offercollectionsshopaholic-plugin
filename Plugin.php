@@ -13,6 +13,16 @@ use Logingrupa\OfferCollectionsShopaholic\Classes\Event\BackendMenuHandler;
 class Plugin extends PluginBase
 {
     /**
+     * StoreExtender owns the colour taxonomy the collections hub derives its
+     * membership from, so it must boot first.
+     *
+     * @var array
+     */
+    public $require = [
+        'Logingrupa.StoreExtender',
+    ];
+
+    /**
      * Plugin boot method
      */
     public function boot()
@@ -38,6 +48,19 @@ class Plugin extends PluginBase
             'Logingrupa\OfferCollectionsShopaholic\Components\CollectionList' => 'CollectionList',
             'Logingrupa\OfferCollectionsShopaholic\Components\CollectionPage' => 'CollectionPage',
             'Logingrupa\OfferCollectionsShopaholic\Components\CollectionData' => 'CollectionData',
+            'Logingrupa\OfferCollectionsShopaholic\Components\CollectionHub' => 'CollectionHub',
+            'Logingrupa\OfferCollectionsShopaholic\Components\CollectionFamilyPage' => 'CollectionFamilyPage',
         ];
+    }
+
+    /**
+     * Register console commands
+     */
+    public function register()
+    {
+        $this->registerConsoleCommand(
+            'offercollections.seed_color_collections',
+            \Logingrupa\OfferCollectionsShopaholic\Console\SeedColorCollections::class
+        );
     }
 }

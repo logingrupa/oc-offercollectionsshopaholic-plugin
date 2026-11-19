@@ -29,6 +29,10 @@
         'collection_data_description' => 'Get collection by ID',
         'collection_list_name' => 'Offer Collection List',
         'collection_list_description' => 'Get collection list',
+        'collection_hub_name' => 'Collections Hub',
+        'collection_hub_description' => 'Every collection and colour family that carries a live shade, as chips',
+        'collection_family_page_name' => 'Collection / Colour Family Page',
+        'collection_family_page_description' => 'One family by its value slug: its shades, its stored copy and whether it is indexable',
     ],
     'permission' => [
         'collection' => 'Manage collection',
