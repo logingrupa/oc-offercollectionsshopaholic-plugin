@@ -41,8 +41,9 @@ class CollectionHub extends ComponentBase
     }
 
     /**
-     * The two rows, collections first, each family carrying the nails it is
-     * drawn with: three for a collection's fan, one for a colour's wall tile.
+     * The two rows, collections first, each family carrying what it is drawn
+     * with: an editor's own cover when the family has one, otherwise the
+     * shades - three for a collection's fan, one for a colour's wall tile.
      *
      * @return array ['collections' => array, 'colors' => array]
      */
@@ -52,7 +53,7 @@ class CollectionHub extends ComponentBase
 
         $arSectionList = ['collections' => [], 'colors' => []];
         foreach ($arFamilyList as $arFamily) {
-            $arFamily['arNailList'] = $this->applyEditorialCover($arFamily);
+            $arFamily['sCoverImage'] = $this->resolveEditorialCover($arFamily);
             $bIsCollection = $arFamily['kind'] === ColorFamilyMeta::KIND_COLLECTION;
             $arSectionList[$bIsCollection ? 'collections' : 'colors'][] = $arFamily;
         }
@@ -64,36 +65,31 @@ class CollectionHub extends ComponentBase
      * Let an editor choose what leads a family.
      *
      * The reader hands back the most confidently-that-colour shades, which is
-     * right for the grid and sometimes wrong for a cover: the white family's
-     * most confident shade is a gel swirl, not a painted nail. A picture on
-     * the family's collection row wins the first slot when one is set; with
-     * none set nothing changes, which is the state every family ships in.
+     * right for a fan of nails and wrong for a collection: a collection is
+     * sold as a designed set, and its poster says more than three of its
+     * shades do. A picture on the family's collection row replaces the fan
+     * when one is set, fitted whole and never cropped - the nail ratio is a
+     * shade's ratio and a poster does not share it.
+     *
+     * With no picture set nothing changes, which is the state every family
+     * ships in: the tile draws its shades exactly as before.
      *
      * @param array $arFamily
-     * @return array<string>
+     * @return string the cover URL, or an empty string to draw the shades
      */
-    protected function applyEditorialCover(array $arFamily): array
+    protected function resolveEditorialCover(array $arFamily): string
     {
-        $arNailList = (array) ($arFamily['arNailList'] ?? []);
-
         $obEditorial = CollectionEditorial::bySlug((string) $arFamily['slug']);
         if ($obEditorial === null) {
-            return $arNailList;
+            return '';
         }
 
         $obImage = $obEditorial->preview_image;
         if (empty($obImage)) {
-            return $arNailList;
+            return '';
         }
 
-        $sCover = OfferImageHelper::nail($obImage);
-        if ($sCover === '') {
-            return $arNailList;
-        }
-
-        array_unshift($arNailList, $sCover);
-
-        return array_slice($arNailList, 0, self::COLLECTION_COVER_COUNT);
+        return OfferImageHelper::cover($obImage);
     }
 
     /**
